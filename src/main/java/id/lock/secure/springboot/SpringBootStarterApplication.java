@@ -12,7 +12,7 @@ public class SpringBootStarterApplication {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "Hello Docker World";
+		return "Hello Docker World Version 2";
 	}
 
 	public static void main(String[] args) {
