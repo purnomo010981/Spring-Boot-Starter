@@ -24,7 +24,7 @@ node {
 	      // CentOS
 		  // sh "'${mvnHome}/bin/mvn' clean install"
 		  // Windows
-		  sh "'${mvnHome}/bin/mvn.cmd' DskipTests=true clean install"
+		  sh "'${mvnHome}/bin/mvn.cmd' -DskipTests=true clean install"
 	    }
 			
 	    stage('Build Docker Image') {
