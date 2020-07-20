@@ -38,11 +38,11 @@ node {
 			
 	      echo "Docker Image Tag Name: ${dockerImageTag}"
 		  
-		  sh "docker stop insign"
+		  sh "docker.exe stop insign"
 		  
-		  sh "docker rm insign"
+		  sh "docker.exe rm insign"
 		  
-		  sh "docker run --name insign -d -p 8080:8080 insign:${env.BUILD_NUMBER}"
+		  sh "docker.exe run --name insign -d -p 8080:8080 insign:${env.BUILD_NUMBER}"
 		  
 		  // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
 	      //    dockerImage.push("${env.BUILD_NUMBER}")
