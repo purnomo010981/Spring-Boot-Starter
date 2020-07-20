@@ -37,13 +37,27 @@ node {
 	      // deploy docker image to nexus
 			
 	      echo "Docker Image Tag Name: ${dockerImageTag}"
-		  ignore(FAILURE){
- 
-		  sh "docker.exe stop insign"
+		  steps{
+			try {
+				sh "docker.exe stop insign"
+			} catch (err) {
+			  echo "Container Not Running"
+			}
+			
+			try {
+				sh "docker.exe rm insign"
+			} catch (err) {
+			  echo "Container Not Exist"
+			}
+			
+			try {
+				sh "docker.exe run --name insign -d -p 8080:8080 insign:${env.BUILD_NUMBER}"
+			} catch (err) {
+			  echo "Container Not Running"
+			}
 		  
-		  sh "docker.exe rm insign"
 		  
-		  sh "docker.exe run --name insign -d -p 8080:8080 insign:${env.BUILD_NUMBER}"
+		  
 		  }		  
 		  // docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
 	      //    dockerImage.push("${env.BUILD_NUMBER}")
