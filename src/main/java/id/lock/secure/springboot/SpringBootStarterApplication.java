@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SpringBootStarterApplication {
 	
-	@RequestMapping("/", method = GET)
+	@RequestMapping(value = "/", method = GET)
 	public String home() {
 		return "Hello Docker World Version 3";
 	}
